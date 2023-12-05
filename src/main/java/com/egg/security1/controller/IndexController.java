@@ -2,22 +2,18 @@ package com.egg.security1.controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.http.ResponseEntity;
-import java.util.HashMap;
-import java.util.Map;
+import org.springframework.stereotype.Controller;
 
-@RestController
+
+
+
+@Controller
 @RequestMapping("/")
-public class IndexController{
+public class IndexController {
 
-    @GetMapping
-    public ResponseEntity<Map<String, String>> index() {
-        Map<String, String> response = new HashMap<>();
-        response.put("message", "Hello World!");
-        return ResponseEntity.ok(response);
+    @GetMapping("/")
+    public String index() {
+        return "index";
     }
+
 }
-
-
-

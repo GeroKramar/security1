@@ -1,5 +1,13 @@
 package com.egg.security1.repositories;
 
-public interface UserRepository {
-    
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import com.egg.entities.User;
+
+@Repository
+public interface UserRepository extends JpaRepository<User,String> {
+
+   public User findByEmail(String email);
+
 }
