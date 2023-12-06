@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
-import com.egg.entities.User;
+import com.egg.security1.entities.User;
 import com.egg.security1.repositories.UserRepository;
 
 import jakarta.servlet.http.HttpSession;

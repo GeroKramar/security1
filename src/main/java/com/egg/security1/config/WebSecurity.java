@@ -17,26 +17,26 @@ import com.egg.security1.services.UsuarioServices;
 @EnableMethodSecurity(prePostEnabled = true)
 public class WebSecurity {
 
-    @Autowired
-    public UsuarioServices usuarioServices;
+        @Autowired
+        public UsuarioServices usuarioServices;
 
-    @Autowired
-    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(usuarioServices).passwordEncoder(new BCryptPasswordEncoder());
-    }
+        @Autowired
+        public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+                auth.userDetailsService(usuarioServices).passwordEncoder(new BCryptPasswordEncoder());
+        }
 
-    @Bean // SPRING 3 EN ADELANTE
-    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http
-                .authorizeHttpRequests((authz) -> authz
-                        .requestMatchers("/login", "/register").permitAll())
-                .formLogin((login) -> login
-                        .loginPage("/login")
-                        .usernameParameter(""))
-                .logout((logout) -> logout
-                        .logoutUrl("/logout"))
-                .csrf((csrf) -> csrf.disable());
-        return http.build();
-    }
+        @Bean
+        public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+                http
+                                .authorizeHttpRequests((authz) -> authz
+                                                .requestMatchers("/**").permitAll())
+                                .formLogin((login) -> login
+                                                .loginPage("/login")
+                                                .usernameParameter("Username"))
+                                .logout((logout) -> logout
+                                                .logoutUrl("/logout"))
+                                .csrf((csrf) -> csrf.disable());
+                return http.build();
+        }
 
 }

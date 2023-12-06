@@ -1,4 +1,4 @@
-package com.egg.entities;
+package com.egg.security1.entities;
 
 import com.egg.security1.enums.Rol;
 
